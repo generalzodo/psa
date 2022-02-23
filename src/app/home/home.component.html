@@ -1,43 +1,4 @@
-<nav class="navbar navbar-expand-lg site-navbar navbar-dark bg-dark" id="pb-navbar">
-
-  <div class="container">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
-      aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">
-      <img src="assets/images/logo.png" width="100" height="100" alt="">
-    </a>
-
-    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample09">
-      <ul class="navbar-nav">
-        <!-- <li class="nav-item"><a class="nav-link" href="#section-home">Home</a></li> -->
-        <li class="nav-item"><a class="nav-link" href="#section-portfolio">Listen</a></li>
-        <li class="nav-item"><a class="nav-link" href="#section-resume">Watch</a></li>
-        <li class="nav-item"><a class="nav-link" href="#section-events">Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="#section-about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#section-contact">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="#section-contact">Invite PSA</a></li>
-        <li class="nav-item"><a class="nav-link" href="http://web.facebook.com/samuel.oluwatobaamoo"><span
-              class="icon-facebook2"></span></a>
-        <li class="nav-item"><a class="nav-link" href="https://twitter.com/psamuel_amoo?s=08"><span
-              class="icon-twitter"></span></a>
-        <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/psamuelamoo/"><span
-              class="icon-instagram"></span></a>
-        <li class="nav-item"><a class="nav-link" href="https://www.youtube.com/results?search_query=samuel+amoo"><span
-              class="icon-youtube"></span></a>
-          <!-- <a href="http://web.facebook.com/samuel.oluwatobaamoo" class="social-item"><span class="icon-facebook2"></span></a> -->
-          <!-- <a href="https://twitter.com/psamuel_amoo?s=08" class="social-item"><span class="icon-twitter"></span></a>
-                          <a href="https://www.instagram.com/psamuelamoo/" class="social-item"><span class="icon-instagram2"></span></a>
-                          <a href="https://www.youtube.com/results?search_query=samuel+amoo" class="social-item"><span class="icon-youtube"></span></a>
-                       -->
-        </li>
-
-      </ul>
-    </div>
-  </div>
-</nav>
-
+<app-header></app-header>
 
 <section class="site-hero" style="background-image: url(assets/images/bg.jpeg);" id="section-home"
   data-stellar-background-ratio="0.5">
@@ -303,14 +264,14 @@
 
       <div class="col-md-6 col-lg-4 text-center mb-5">
         <div class="site-service-item site-animate" data-animate-effect="fadeIn">
-          <img src="assets/images/flyer.jpg" width="100%" alt="">
-          <h3 class="my-4">Jesus Only</h3>
-          <p>Friday, 3rd December 2021, 8pm</p>
+          <img src="https://media.graphcms.com/f66UCuxjSaXtVFiXesJq" width="100%" alt="">
+          <h3 class="my-4">School of Light</h3>
+          <p>Friday, 23rd February 2022, 6pm</p>
           <p><a href="#" class="site-link">Register now <i class="icon-chevron-right"></i></a></p>
         </div>
       </div>
 
-      <div class="col-md-6 col-lg-4 text-center mb-5">
+      <!-- <div class="col-md-6 col-lg-4 text-center mb-5">
         <div class="site-service-item site-animate" data-animate-effect="fadeIn">
           <img src="assets/images/flyer.jpg" width="100%" alt="">
           <h3 class="my-4">Jesus Only</h3>
@@ -325,7 +286,7 @@
           <p>Friday, 3rd December 2021, 8pm</p>
           <p><a href="#" class="site-link">Register now <i class="icon-chevron-right"></i></a></p>
         </div>
-      </div>
+      </div> -->
 
 
     </div>
@@ -419,23 +380,58 @@
       </div>
 
       <div class="col-md-7 mb-5 mb-md-0">
-        <form action="https://mailthis.to/somto8000@gmail.com" method="POST" class="site-form">
+        <form #buyForm="ngForm" (ngSubmit)="sendContact(buyForm)" class="site-form mt-5">
+
           <h3 class="mb-5">Send a Message</h3>
           <div class="form-group">
-            <input type="text" name="name" class="form-control px-3 py-4" placeholder="Your Name">
+            <input type="text" #name="ngModel" required name="name" [(ngModel)]="post.name"
+              class="form-control px-3 py-4" placeholder="Your Name">
+            <div *ngIf="name.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+              <div *ngIf="name.errors['required']">
+                <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt="">
+                  &nbsp;
+                  Name is required.</p>
+              </div>
+            </div>
           </div>
           <div class="form-group">
-            <input type="email" name="email" class="form-control px-3 py-4" placeholder="Your Email">
+            <input type="text" #email="ngModel" required name="email" [(ngModel)]="post.email"
+              class="form-control px-3 py-4" placeholder="Your Email">
+            <div *ngIf="email.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+              <div *ngIf="email.errors['required']">
+                <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt="">
+                  &nbsp;
+                  Email is required.</p>
+              </div>
+            </div>
           </div>
           <div class="form-group">
-            <input type="phone" name="phone" class="form-control px-3 py-4" placeholder="Your Phone">
-          </div>
-          <div class="form-group mb-5">
-            <textarea class="form-control px-3 py-4" name="message" cols="30" rows="10"
-              placeholder="Write a Message"></textarea>
+            <input type="text" #phone="ngModel" required name="phone" [(ngModel)]="post.phone"
+              class="form-control px-3 py-4" placeholder="Your Phone">
+            <div *ngIf="phone.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+              <div *ngIf="phone.errors['required']">
+                <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt="">
+                  &nbsp;
+                  Phone is required.</p>
+              </div>
+            </div>
           </div>
           <div class="form-group">
-            <input type="submit" class="btn btn-primary  px-4 py-3" value="Send Message">
+            <textarea #message="ngModel" required name="message" [(ngModel)]="post.message"
+              class="form-control px-3 py-4" placeholder="Message "> </textarea>
+            <div *ngIf="message.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+              <div *ngIf="message.errors['required']">
+                <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+                  Message is required.</p>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="form-group mb-5">
+              <textarea class="form-control px-3 py-4" name="message" cols="30" rows="10"
+                placeholder="Write a Message"></textarea>
+            </div> -->
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary  px-4 py-3" value="Send Message">Submit</button>
           </div>
         </form>
       </div>
@@ -446,14 +442,17 @@
             <span class="text-uppercase">Email</span>
             info@psa.ng
           </li>
-          <li>
+          <!-- <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLScDZVtWEUS9Lw6m09Wg0S2jZXTdcLHixrHpIJZNoRq5G8zsTg/viewform?embedded=true"
+            width="640" height="382" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> -->
+          <!-- <li>
             <span class="text-uppercase">Phone</span>
             +30 976 1382 9921
           </li>
           <li>
             <span class="text-uppercase">Fax</span>
             +30 976 1382 9922
-          </li>
+          </li> -->
           <!-- <li>
                               <span class="text-uppercase">Address</span>
                               San Francisco, CA <br>

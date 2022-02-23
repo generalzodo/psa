@@ -1,40 +1,31 @@
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
 declare var Toastify: any;
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-invite',
+  templateUrl: './invite.component.html',
+  styleUrls: ['./invite.component.scss']
 })
-export class HomeComponent implements OnInit {
-  title = 'psa';
-  videos: any = [];
-  data: any;
+export class InviteComponent implements OnInit {
   post: any = {}
   isValidFormSubmitted: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private _sanitizer: DomSanitizer) { }
+  constructor(private http: HttpClient,) { }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe((response: any) => {
-      console.log('PRODUCT FETCHING', response.res);
-      this.videos = response.res.items
-      // console.log(this.data);
-
-    });
   }
 
-  sanitize(videoURL: any) {
-    let vid = videoURL.replace("watch", "embed");
-    vid = vid.replace("?v=", "/");
-    return this._sanitizer.bypassSecurityTrustResourceUrl(vid);
+  makePayment(form: NgForm) {
+
+    this.isValidFormSubmitted = false;
+    if (form.invalid) {
+      return;
+    }
   }
 
-  sendContact(form: NgForm) {
+  sendInvite(form: NgForm,) {
     this.isValidFormSubmitted = false;
     if (form.invalid) {
       console.log('invalid');
@@ -48,7 +39,7 @@ export class HomeComponent implements OnInit {
 
     });
     Toastify({
-      text: 'Your message has been recieved successfully',
+      text: 'Your invite has been recieved successfully',
       duration: 5000,
 
       close: true,
@@ -62,5 +53,4 @@ export class HomeComponent implements OnInit {
     }).showToast();
 
   }
-
 }

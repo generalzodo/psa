@@ -1,0 +1,186 @@
+<div class="container">
+  <div class="w-50 mx-auto">
+
+    <div class="row">
+      <div class="col">
+        <a class="navbar-brand" href="#">
+          <img src="assets/images/logo.png" width="100" height="100" alt="">
+        </a>
+      </div>
+      <div class="col">
+        <p class="text-right mt-5">
+
+          <a style="color: #fff" class="me-3 hidden text-end" [routerLink]="['/']" href="javascript:void(0)"><svg
+              xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+              <path d="M0 0h24v24H0V0z" fill="none" opacity=".87" />
+              <path fill="#fff" d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z" /></svg>Back to
+            main
+            site</a>
+
+        </p>
+
+      </div>
+    </div>
+
+    <form #buyForm="ngForm" (ngSubmit)="sendInvite(buyForm)" class="site-form mt-5">
+      <h3 class="mb-2 mt-3">Invite PSA</h3>
+      <p class="mb-5">Want to invite PSA for a ministration? fill up this form</p>
+      <div class="form-group">
+        <input type="text" #name="ngModel" required name="name" [(ngModel)]="post.name" class="form-control px-3 py-4"
+          placeholder="Your Name">
+        <div *ngIf="name.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="name.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Name is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #email="ngModel" required name="email" [(ngModel)]="post.email"
+          class="form-control px-3 py-4" placeholder="Your Email">
+        <div *ngIf="email.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="email.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Email is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #phone="ngModel" required name="phone" [(ngModel)]="post.phone"
+          class="form-control px-3 py-4" placeholder="Your Phone">
+        <div *ngIf="phone.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="phone.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Phone is required.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <input type="text" #location="ngModel" required name="location" [(ngModel)]="post.location"
+          class="form-control px-3 py-4" placeholder="Your Location">
+        <div *ngIf="location.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="location.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Location is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #date="ngModel" required name="date" [(ngModel)]="post.date" class="form-control px-3 py-4"
+          placeholder=" Date of Event">
+        <div *ngIf="date.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="date.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Date is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #duration="ngModel" required name="duration" [(ngModel)]="post.duration"
+          class="form-control px-3 py-4" placeholder="Duration of Ministration">
+        <div *ngIf="duration.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="duration.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Duration of Ministration is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #topic="ngModel" required name="topic" [(ngModel)]="post.topic"
+          class="form-control px-3 py-4" placeholder="Topic of Ministration">
+        <div *ngIf="topic.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="topic.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Topic of Ministration is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #nature="ngModel" required name="nature" [(ngModel)]="post.nature"
+          class="form-control px-3 py-4" placeholder="Nature of Program">
+        <div *ngIf="nature.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="nature.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Nature of Program is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #time="ngModel" required name="time" [(ngModel)]="post.time" class="form-control px-3 py-4"
+          placeholder="Time of Ministration">
+        <div *ngIf="time.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="time.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Time of Ministration is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #detailOfMinistry="ngModel" required name="detailOfMinistry"
+          [(ngModel)]="post.detailOfMinistry" class="form-control px-3 py-4" placeholder="Details of Ministry">
+        <div *ngIf="detailOfMinistry.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="detailOfMinistry.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Details of Ministry is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea #otherMinisters="ngModel" required name="otherMinisters" [(ngModel)]="post.otherMinisters"
+          class="form-control px-3 py-4" placeholder="Other guest ministers "> </textarea>
+        <div *ngIf="otherMinisters.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="otherMinisters.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Other guest ministers is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #audience="ngModel" required name="audience" [(ngModel)]="post.audience"
+          class="form-control px-3 py-4" placeholder="Nature of Audience">
+        <div *ngIf="audience.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="audience.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Nature of Audience is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="text" #duration="ngModel" required name="duration" [(ngModel)]="post.duration"
+          class="form-control px-3 py-4" placeholder="Duration of Ministration">
+        <div *ngIf="duration.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="duration.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Duration of Ministration is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea #socialHandles="ngModel" required name="socialHandles" [(ngModel)]="post.socialHandles"
+          class="form-control px-3 py-4" placeholder="Ministry Social Media Handles "> </textarea>
+        <div *ngIf="socialHandles.errors && buyForm.submitted && !isValidFormSubmitted" class="error">
+          <div *ngIf="socialHandles.errors['required']">
+            <p style="color: red; margin-top: 5px"> <img src="assets/img/error.svg" width="0.9375rem" alt=""> &nbsp;
+              Ministry Social Media Handles is required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea #expectation="ngModel" name="expectation" [(ngModel)]="post.expectation"
+          class="form-control px-3 py-4" placeholder="Your Expectation "> </textarea>
+      </div>
+      <div class="form-group">
+        <textarea #additionalInfo="ngModel" name="additionalInfo" [(ngModel)]="post.additionalInfo"
+          class="form-control px-3 py-4" placeholder="Additional Information "> </textarea>
+      </div>
+
+
+
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary  px-4 py-3" value="Send Invite">
+      </div>
+    </form>
+
+  </div>
