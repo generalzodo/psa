@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     }
 
     this.isValidFormSubmitted = true;
-    this.http.post<any>('https://getform.io/f/501eab67-3638-499a-81aa-b9bf661f3439', this.post).subscribe(res => {
+    this.http.post<any>('https://getform.io/f/e1f00d09-a88d-45cd-907a-b1ff443cfb42', this.post).subscribe(res => {
       console.log(res);
 
     });
