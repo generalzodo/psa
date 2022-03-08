@@ -96,6 +96,11 @@ a:active {
   color: #fff;
 }
 
+.navbar-collapse {
+  background: rgba(1, 1, 1, 0.15) !important;
+  backdrop-filter: blur(8.5px);
+}
+
 .site-navbar.bg-dark {
   background: transparent !important;
 }
